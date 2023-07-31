@@ -2651,7 +2651,7 @@ class UmDbSpy(wx.Frame):
                         # Need to find out the mysql verison because there are different grants
                         retVal = conn.execute('mysql --version')
                         if ("8.0" in str(retVal)):
-                            retVal = conn.execute('mysql --user=root --password=ugauga -e \"drop user if exists umdev;  create user \'umdev\' identified with mysql_native_password by \'ugauga\'; grant all privileges on *.* to \'umdev\'@\'%\' with grant option;\"')
+                            retVal = conn.execute('mysql --user=root --password= -e \"drop user if exists umdev;  create user \'umdev\' identified with mysql_native_password by \'ugauga\'; grant all privileges on *.* to \'umdev\'@\'%\' with grant option;\"')
                             print(retVal)
                             if ( "Access denied" in str(retVal) ):
                                 retVal = conn.execute('mysql --user=root -e \"drop user if exists umdev;  create user \'umdev\' identified with mysql_native_password by \'ugauga\'; grant all privileges on *.* to \'umdev\'@\'%\' with grant option;\"')
@@ -2665,7 +2665,7 @@ class UmDbSpy(wx.Frame):
                             conn.close()
                         else:
                             # So if this is an api server then the password is blank
-                            retVal = conn.execute('mysql --user=root --password=ugauga -e \"grant all privileges on *.* to \'root\'@\'%\' identified by \'ugauga\' with grant option; flush privileges;\"')
+                            retVal = conn.execute('mysql --user=root --password= -e \"grant all privileges on *.* to \'root\'@\'%\' identified by \'ugauga\' with grant option; flush privileges;\"')
                             print(retVal)
                             if ( "Access denied" in str(retVal) ):
                                 retVal = conn.execute('mysql --user=root -e \"grant all privileges on *.* to \'root\'@\'%\' identified by \'ugauga\' with grant option; flush privileges;\"')
